@@ -1,14 +1,15 @@
- <?php // (C) Copyright Bobbing Wide 2013
+ <?php // (C) Copyright Bobbing Wide 2013, 2014
 /**
  * Enqueue the internal CSS styling
  *
- * This code COULD be improved to accumulate ALL the appended CSS into one block and then produced during footer processing
+ * This code COULD be improved to accumulate ALL the appended CSS into one block and then produced during footer processing.
+ * Note: we also support media="print"
  *
  * @param array $atts - shortcode parameters - currently unused
  * @param string $content - the CSS to enqueue
  */
 function bw_enqueue_style( $atts, $content ) {
-  stag( "style", null, null, kv( "type", "text/css" ) . kv( "media", "screen" ) );
+  stag( "style", null, null, kv( "type", "text/css" ) . kv( "media", "screen,print")  );
   e( $content );
   etag( "style" );
 }
@@ -37,7 +38,6 @@ function bw_format_style( $atts, $content ) {
  * @param string $content - the code to be put through GESHI highlighting
  * @param string $language - the language to use.
  * @return string the highlighted code
- 
  */
 function bw_geshi_it( $content, $language="CSS" ) {
   if ( !function_exists('geshi_highlight') ) {
@@ -51,6 +51,7 @@ function bw_geshi_it( $content, $language="CSS" ) {
  * Remove unwanted tags introduced by other filters
  * 
  * The $content may contain all sorts of nastys that WordPress filters have added to the plain text so we need to strip it out.
+ * @link http://www.ascii.cl/htmlcodes.htm
  *
  * @param string $content 
  * @return string - content with the unwanted HTML removed
@@ -60,6 +61,9 @@ function bw_remove_unwanted_tags( $content ) {
   $dec = str_replace( "<br />", "", $dec );
   $dec = str_replace( "<p>", "", $dec );
   $dec = str_replace( "</p>", "", $dec );
+  
+  $dec = str_replace( "&#8216;", "'", $dec );  // Left single quotation mark
+  $dec = str_replace( "&#8217;", "'", $dec );  // Right single quotation mark
   $dec = str_replace( "&#8220;", '"', $dec );  // Left double quotation mark
   $dec = str_replace( "&#8221;", '"', $dec );  // Right double quotation mark
   //bw_trace2( $dec, "de-tagged content" );
@@ -85,7 +89,7 @@ function oik_css( $atts=null, $content=null, $tag=null ) {
 }
 
 function bw_css__help( $shortcode="bw_css" ) {
-  return( "Add internal CSS styling" );
+  return( __( "Add internal CSS styling", "oik-css" ) );
 }
 
 /**

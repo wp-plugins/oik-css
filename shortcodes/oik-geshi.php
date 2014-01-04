@@ -1,8 +1,12 @@
-<?php // (C) Copyright Bobbing Wide 2013
+<?php // (C) Copyright Bobbing Wide 2013, 2014
 
 /**
- *  Validate the language valid for GeSHi
- 
+ *  Validate the language for GeSHi
+ *
+ * @param string $lang - the required languange ( case insensitive )
+ * @param string $text - alternative parameter for language ( case sensitive )
+ * @return string - the validated language, or null
+ * 
  */
 function oik_css_validate_lang( $lang, &$text ) {
   bw_trace2();
@@ -16,7 +20,7 @@ function oik_css_validate_lang( $lang, &$text ) {
     }  
   }
   if ( !$vlang ) {
-    p( "Invalid lang= parameter for shortcode. $lang" );
+    p( "Invalid lang= parameter for bw_geshi shortcode. $lang" );
     p( "$vlang,$text" );
   } 
   return( $vlang );
@@ -24,7 +28,6 @@ function oik_css_validate_lang( $lang, &$text ) {
 
 /**
  * Format the content for the chosen language
- * 
  *
  * @param array $atts - array of parameters. The formal parameter name is "text" but ANY value will do the job
  * @param string $content - the CSS to be displayed

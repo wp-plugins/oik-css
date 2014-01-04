@@ -1,9 +1,9 @@
 === oik-css ===
-Contributors: bobbingwide
+Contributors: bobbingwide, vsgloik
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcode, CSS, GeSHi, [bw_css], [bw_geshi], oik, lazy, smart
 Requires at least: 3.5
-Tested up to: 3.6-beta
+Tested up to: 3.8
 Stable tag: 0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -72,6 +72,12 @@ Note: oik-css will only load the GeSHi code if it is not already loaded.
 2. [bw_geshi] - examples 
 
 == Upgrade Notice ==
+= 0.4 = 
+Tested with WordPress 3.8 
+
+= 0.3 = 
+Upgrade if you are finding problems with other plugins. e.g. All In One Events Calendar ( [ai1ec] shortcode )
+
 = 0.2 =
 Dependent upon the oik base plugin v2.0 (or higher)
 
@@ -79,6 +85,15 @@ Dependent upon the oik base plugin v2.0 (or higher)
 Dependent upon the oik base plugin 
 
 == Changelog == 
+= 0.4 =
+* Tested: With WordPress 3.8
+* Changed: Added support for media=print in addition to media=screen
+
+= 0.3 = 
+* Changed: bw_remove_unwanted_tags() now handles the HTML versions of Left single quotation mark and Right single quotation mark.
+* Changed: Replace wpautop() by bw_wpautop(), run after shortcode expansion and remove shortcode_unautop(), no longer necessary
+* Added: bw_wpautop() implement 'the_content' filter using wpautop() without converting newlines to br tags
+
 = 0.2 = 
 * Added: [bw_geshi] GeSHi processing, but only providing support for: CSS, jQuery, JavaScript, PHP and HTML5.
 * Added: Help, syntax help and example for [bw_geshi]

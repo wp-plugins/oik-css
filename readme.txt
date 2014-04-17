@@ -3,7 +3,7 @@ Contributors: bobbingwide, vsgloik
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcode, CSS, GeSHi, [bw_css], [bw_geshi], oik, lazy, smart
 Requires at least: 3.5
-Tested up to: 3.9-beta3
+Tested up to: 3.9
 Stable tag: 0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -73,7 +73,7 @@ Note: oik-css will only load the GeSHi code if it is not already loaded.
 
 == Upgrade Notice ==
 = 0.5 = 
-Now dependent upon oik v2.1. Tested with WordPress 3.9-beta3
+Now dependent upon oik v2.1 or higher. Tested with WordPress 3.9
 
 = 0.4 = 
 Tested with WordPress 3.8 
